@@ -1,0 +1,24 @@
+.root {
+  background: white;
+  display: flex;
+  padding: 16px;
+}
+
+.logo {
+  width: 100%;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  margin: 0;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.link {
+  text-decoration: none;
+  > a {
+    text-decoration: none;
+  }
+}
