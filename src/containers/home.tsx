@@ -17,6 +17,7 @@ export const Home: React.FC = () => {
         return stringifiedAndLowerCased.includes(query.toLowerCase());
       });
       setSearchResults(results);
+      setIsLoading(false);
     },
     [cars]
   );
@@ -38,7 +39,7 @@ export const Home: React.FC = () => {
 
   return (
     <main>
-      <SearchBar onSearch={onSearch} />
+      <SearchBar onSearch={onSearch} setIsLoading={setIsLoading} />
       <PageContent>
         {isLoading && <div>isLoading</div>}
         {!isLoading && <SearchCarResult cars={searchResults} />}

@@ -6,11 +6,13 @@ import styles from "./search-bar.module.scss";
 type Props = {
   placeholder?: string;
   onSearch: (query: string) => void;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 export const SearchBar: React.FC<Props> = ({
   onSearch,
   placeholder = "Search car by year or model...",
+  setIsLoading,
 }) => {
   const [userInput, setUserInput] = React.useState("");
   const [searchQuery] = useDebounce(userInput, 500);
@@ -30,7 +32,10 @@ export const SearchBar: React.FC<Props> = ({
             id="search-car"
             value={userInput}
             placeholder={placeholder}
-            onChange={({ currentTarget }) => setUserInput(currentTarget.value)}
+            onChange={({ currentTarget }) => {
+              setIsLoading(true);
+              setUserInput(currentTarget.value);
+            }}
           />
         </div>
       </div>

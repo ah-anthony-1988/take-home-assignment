@@ -8,8 +8,9 @@ type Props = {
 
 export const SearchCarResult: React.FC<Props> = ({ cars }) => (
   <div id="search-results">
-    {cars.map((c) => (
-      <Card key={c.id}>{`${c.model} - ${c.version}`}</Card>
-    ))}
+    {(!!cars.length &&
+      cars.map((c) => (
+        <Card key={c.id}>{`${c.model} - ${c.version}`}</Card>
+      ))) || <div>No cars were found matching your search...</div>}
   </div>
 );
