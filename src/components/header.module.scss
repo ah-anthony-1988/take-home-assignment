@@ -1,5 +1,5 @@
 .root {
-  background: white;
+  background: #fff;
   display: flex;
   padding: 16px;
   position: sticky;
@@ -8,26 +8,36 @@
 
 .content {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 800px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .logo {
-  width: 100%;
+  font-size: 32px;
 }
 
 .links {
-  width: 100%;
   display: flex;
   margin: 0;
   list-style: none;
   justify-content: space-between;
+  align-items: center;
+  > :first-child {
+    padding-left: 0;
+  }
 }
 
 .link {
-  text-decoration: none;
+  padding: 0 16px;
   > a {
     text-decoration: none;
   }
