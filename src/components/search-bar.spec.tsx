@@ -6,10 +6,10 @@ import { SearchBar } from "./search-bar";
 describe("search bar component", () => {
   it("should have honda as input value when user types honda", () => {
     const onSearch = jest.fn();
-    const { getByLabelText, getByDisplayValue } = render(
+    const { getByTitle, getByDisplayValue } = render(
       <SearchBar onSearch={onSearch} />
     );
-    const input = getByLabelText(/search car/i);
+    const input = getByTitle(/search-car/i);
     userEvent.type(input, "honda");
     getByDisplayValue("honda");
   });

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { getCars } from "../api";
-import { Content } from "../components/elements/content/content";
+import { PageContent } from "../components/elements/page-content/page-content";
 import { SearchBar } from "../components/search-bar";
 import { SearchCarResult } from "../components/search-car-result";
 import { Car } from "../interfaces";
@@ -37,10 +37,12 @@ export const Home: React.FC = () => {
   }, [setCars]);
 
   return (
-    <Content>
+    <main>
       <SearchBar onSearch={onSearch} />
-      {isLoading && <div>isLoading</div>}
-      {!isLoading && <SearchCarResult cars={searchResults} />}
-    </Content>
+      <PageContent>
+        {isLoading && <div>isLoading</div>}
+        {!isLoading && <SearchCarResult cars={searchResults} />}
+      </PageContent>
+    </main>
   );
 };

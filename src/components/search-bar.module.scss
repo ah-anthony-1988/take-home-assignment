@@ -1,14 +1,25 @@
 .root {
+  background: #fff;
   width: 100%;
-  padding-bottom: 16px;
+  padding: 16px 0;
+
+  .content {
+    max-width: 800px;
+    margin: auto;
+  }
 
   .form {
+    > label {
+      padding-right: 8px;
+    }
     display: flex;
-    flex-direction: column;
   }
 
   input {
     width: 100%;
     max-width: 400px;
+  }
+  .searchIcon {
+    padding-right: 8px;
   }
 }

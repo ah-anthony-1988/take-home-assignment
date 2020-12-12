@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import { Page } from "./components/elements/page/page";
 import { Header } from "./components/header";
 import { Home } from "./containers/home";
+import { Footer } from "./components/footer";
 
 function App() {
   const history = createBrowserHistory();
@@ -13,6 +14,7 @@ function App() {
         <Page>
           <Header />
           <Home />
+          <Footer />
         </Page>
       </Router>
     </div>
