@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
             <Link to="/">Home</Link>
           </li>
           <li className={styles.link}>
-            <Link to="/contact">Contact</Link>
+            <Link to="/add-car">Add Car</Link>
           </li>
           <li className={styles.link}>
             <Link to="/sign-up">Sign up</Link>
