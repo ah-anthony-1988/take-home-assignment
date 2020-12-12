@@ -13,8 +13,15 @@ export const Home: React.FC = () => {
   const onSearch = React.useCallback(
     (query: string) => {
       const results = cars.filter((c) => {
-        const stringifiedAndLowerCased = JSON.stringify(c).toLowerCase();
-        return stringifiedAndLowerCased.includes(query.toLowerCase());
+        const joinedValuesString = Object.entries(c)
+          .filter(
+            ([prop]) =>
+              prop === "model" || prop === "version" || prop === "releaseYear"
+          )
+          .map(([prop, value]) => value)
+          .join("")
+          .toLowerCase();
+        return joinedValuesString.includes(query.toLowerCase());
       });
       setSearchResults(results);
       setIsLoading(false);
@@ -24,18 +31,21 @@ export const Home: React.FC = () => {
 
   // data initialisation
   React.useEffect(() => {
+    setIsLoading(true);
     getCars()
       .then((data) => {
         setTimeout(() => {
           setCars(data);
-          setIsLoading(false);
         }, 1000);
       })
-      .catch((e) => {
+      .catch(() => {
         console.warn("Something went wrong...");
-        setIsLoading(false);
       });
-  }, [setCars]);
+    return function cancelStateUpdates() {
+      setIsLoading((prev) => prev);
+      setCars((prev) => prev);
+    };
+  }, []);
 
   return (
     <main>

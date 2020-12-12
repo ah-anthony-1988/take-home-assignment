@@ -3,7 +3,7 @@ export interface Car {
   model: string;
   make?: string;
   version: string;
-  releaseYear: Date;
+  releaseYear: number;
   price: number;
   fuelConsumption: number;
   annualMaintananceCosts: number;
