@@ -4,6 +4,7 @@ import { ControlledInput } from "./elements/controlled-input/controlled-input";
 import styles from "./add-new-car.module.scss";
 import { Heading } from "./elements/heading/heading";
 import { RequestState } from "../enums";
+import { postCar } from "../api/post-car";
 
 type Props = {
   setRequestState: (state: RequestState) => void;
@@ -34,11 +35,12 @@ export const AddNewCar: React.FC<Props> = ({
       fuelConsumption: Number(fuelConsumption),
       maintenanceCosts: Number(maintenanceCosts),
     };
-    console.log("sending....", payload);
+    await postCar(payload);
     setTimeout(() => {
       setRequestState(RequestState.SUCCESS);
     }, 1000);
   };
+
   return (
     <div className={styles.root}>
       <Heading>Create entry</Heading>
@@ -103,9 +105,8 @@ export const AddNewCar: React.FC<Props> = ({
             disabled={
               !make ||
               !model ||
-              !version ||
               !releaseYear ||
-              Number(price) < 1 ||
+              Number(price) < 0 ||
               !fuelConsumption ||
               !maintenanceCosts ||
               requestState === RequestState.PENDING
