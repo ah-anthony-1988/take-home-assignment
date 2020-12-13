@@ -51,8 +51,7 @@ export const Home: React.FC = () => {
     <main>
       <SearchBar onSearch={onSearch} setIsLoading={setIsLoading} />
       <PageContent>
-        {isLoading && <div>isLoading</div>}
-        {!isLoading && <SearchCarResult cars={searchResults} />}
+        <SearchCarResult cars={searchResults} isLoading={isLoading} />
       </PageContent>
     </main>
   );
