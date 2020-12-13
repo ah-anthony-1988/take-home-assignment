@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  align-items: center;
+
+  .label {
+    flex-grow: 1;
+  }
+  input {
+    flex-shrink: 1;
+    max-width: 150px;
+  }
+}

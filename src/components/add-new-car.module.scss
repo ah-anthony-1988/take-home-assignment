@@ -1,0 +1,21 @@
+.root {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.form {
+  width: 100%;
+  max-width: 800px;
+  > * {
+    margin-bottom: 4px;
+  }
+}
+
+.submitSection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saving {
+  padding-right: 8px;
+}
