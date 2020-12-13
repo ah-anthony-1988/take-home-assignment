@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
         const joinedValuesString = Object.entries(c)
           .filter(
             ([prop]) =>
-              prop === "model" || prop === "version" || prop === "releaseYear"
+              prop === "make" || prop === "model" || prop === "releaseYear"
           )
           .map(([prop, value]) => value)
           .join("")

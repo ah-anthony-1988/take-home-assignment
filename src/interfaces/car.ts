@@ -1,10 +1,13 @@
-export interface Car {
-  id: string;
+export interface NewCar {
+  make: string;
   model: string;
-  make?: string;
-  version: string;
+  version?: string;
   releaseYear: number;
   price: number;
   fuelConsumption: number;
-  annualMaintananceCosts: number;
+  maintenanceCosts: number;
+}
+
+export interface Car extends NewCar {
+  id: string;
 }
