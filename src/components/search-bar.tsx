@@ -7,7 +7,7 @@ import styles from "./search-bar.module.scss";
 type Props = {
   placeholder?: string;
   onSearch: (query: string) => void;
-  setIsLoading: (isLoading: boolean) => void;
+  setIsLoading: () => void;
 };
 
 export const SearchBar: React.FC<Props> = ({
@@ -33,7 +33,7 @@ export const SearchBar: React.FC<Props> = ({
           value={userInput}
           placeholder={placeholder}
           onChange={({ currentTarget }) => {
-            setIsLoading(true);
+            setIsLoading();
             setUserInput(currentTarget.value);
           }}
         />

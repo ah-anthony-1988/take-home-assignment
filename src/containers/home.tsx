@@ -3,10 +3,14 @@ import { getCars } from "../api";
 import { PageContent } from "../components/elements/page-content/page-content";
 import { SearchBar } from "../components/search-bar";
 import { SearchCarResult } from "../components/search-car-result";
+import { RequestState } from "../enums";
 import { Car } from "../interfaces";
 
 export const Home: React.FC = () => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
+  const [
+    getCarsRequestState,
+    setGetCarsRequestState,
+  ] = React.useState<RequestState>(RequestState.INIT);
   const [cars, setCars] = React.useState<Car[]>([]);
   const [searchResults, setSearchResults] = React.useState<Car[]>(cars);
 
@@ -24,14 +28,14 @@ export const Home: React.FC = () => {
         return joinedValuesString.includes(query.toLowerCase());
       });
       setSearchResults(results);
-      setIsLoading(false);
+      setGetCarsRequestState(RequestState.SUCCESS);
     },
     [cars]
   );
 
   // data initialisation
   React.useEffect(() => {
-    setIsLoading(true);
+    setGetCarsRequestState(RequestState.PENDING);
     getCars()
       .then((data) => {
         setTimeout(() => {
@@ -42,16 +46,24 @@ export const Home: React.FC = () => {
         console.warn("Something went wrong...");
       });
     return function cancelStateUpdates() {
-      setIsLoading((prev) => prev);
+      setGetCarsRequestState((prev) => prev);
       setCars((prev) => prev);
     };
   }, []);
 
   return (
     <main>
-      <SearchBar onSearch={onSearch} setIsLoading={setIsLoading} />
+      <SearchBar
+        onSearch={onSearch}
+        setIsLoading={() => {
+          setGetCarsRequestState(RequestState.PENDING);
+        }}
+      />
       <PageContent>
-        <SearchCarResult cars={searchResults} isLoading={isLoading} />
+        <SearchCarResult
+          cars={searchResults}
+          isLoading={getCarsRequestState === RequestState.PENDING}
+        />
       </PageContent>
     </main>
   );
