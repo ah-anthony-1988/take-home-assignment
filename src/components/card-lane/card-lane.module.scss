@@ -1,0 +1,8 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  > div {
+    margin: 8px;
+  }
+}
