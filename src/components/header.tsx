@@ -6,10 +6,12 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.root}>
       <div className={styles.content}>
-        <h1 className={styles.logo}>Amazing Cars</h1>
+        <Link to="/" className={styles.logo}>
+          <h1>Amazing Cars</h1>
+        </Link>
         <ul className={styles.links}>
           <li className={styles.link}>
-            <Link to="/">Home</Link>
+            <Link to="/">Find car</Link>
           </li>
           <li className={styles.link}>
             <Link to="/add-car">Add Car</Link>
