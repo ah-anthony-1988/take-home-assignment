@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDebounce } from "use-debounce";
 import { ReactComponent as SearchIcon } from "../icons/search-icon.svg";
+import { SubMenu } from "./elements/sub-menu/sub-menu";
 import styles from "./search-bar.module.scss";
 
 type Props = {
@@ -22,23 +23,21 @@ export const SearchBar: React.FC<Props> = ({
   }, [onSearch, searchQuery]);
 
   return (
-    <div className={styles.root}>
-      <div className={styles.content}>
-        <div className={styles.form}>
-          <SearchIcon width={24} height={24} className={styles.searchIcon} />
-          <input
-            title="search-car"
-            type="text"
-            id="search-car"
-            value={userInput}
-            placeholder={placeholder}
-            onChange={({ currentTarget }) => {
-              setIsLoading(true);
-              setUserInput(currentTarget.value);
-            }}
-          />
-        </div>
+    <SubMenu>
+      <div className={styles.form}>
+        <SearchIcon width={24} height={24} className={styles.searchIcon} />
+        <input
+          title="search-car"
+          type="text"
+          id="search-car"
+          value={userInput}
+          placeholder={placeholder}
+          onChange={({ currentTarget }) => {
+            setIsLoading(true);
+            setUserInput(currentTarget.value);
+          }}
+        />
       </div>
-    </div>
+    </SubMenu>
   );
 };

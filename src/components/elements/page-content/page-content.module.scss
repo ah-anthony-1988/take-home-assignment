@@ -1,5 +1,5 @@
 .root {
-  padding: 0 16px;
+  padding: 16px;
   background-color: #e2e2e2;
   min-height: 600px;
   margin-left: auto;
@@ -7,4 +7,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.content {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,27 +1,18 @@
-.root {
-  background: #fff;
-  padding: 16px;
-  .content {
-    max-width: 800px;
-    margin: auto;
-  }
-
-  .form {
-    > label {
-      padding-right: 8px;
-    }
-    display: flex;
-    justify-content: center;
-    @media screen and (min-width: 768px) {
-      justify-content: flex-start;
-    }
-  }
-
-  input {
-    width: 100%;
-    max-width: 400px;
-  }
-  .searchIcon {
+.form {
+  > label {
     padding-right: 8px;
   }
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+
+input {
+  width: 100%;
+  max-width: 400px;
+}
+.searchIcon {
+  padding-right: 8px;
 }
