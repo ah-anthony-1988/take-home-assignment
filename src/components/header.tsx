@@ -16,12 +16,6 @@ export const Header: React.FC = () => {
           <li className={styles.link}>
             <Link to="/add-car">Add Car</Link>
           </li>
-          <li className={styles.link}>
-            <Link to="/sign-up">Sign up</Link>
-          </li>
-          <li className={styles.link}>
-            <Link to="/login">Log in</Link>
-          </li>
         </ul>
       </div>
     </header>

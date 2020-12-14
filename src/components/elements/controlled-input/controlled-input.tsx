@@ -1,7 +1,9 @@
 import React from "react";
+import classnames from "classnames";
 import styles from "./controlled-input.module.scss";
 
 type Props = {
+  direction?: "row" | "column";
   htmlFor: string;
   label: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,6 +14,7 @@ type Props = {
 };
 
 export const ControlledInput: React.FC<Props> = ({
+  direction = "row",
   htmlFor,
   label,
   min,
@@ -20,7 +23,7 @@ export const ControlledInput: React.FC<Props> = ({
   type,
   value,
 }) => (
-  <div className={styles.root}>
+  <div className={classnames(styles.root, styles[direction])}>
     <label className={styles.label} htmlFor={htmlFor}>
       {label}:
     </label>

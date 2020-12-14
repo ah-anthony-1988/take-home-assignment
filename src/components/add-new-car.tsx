@@ -36,6 +36,7 @@ export const AddNewCar: React.FC<Props> = ({
       maintenanceCosts: Number(maintenanceCosts),
     };
     await postCar(payload);
+    // mock actual time for post call
     setTimeout(() => {
       setRequestState(RequestState.SUCCESS);
     }, 1000);
