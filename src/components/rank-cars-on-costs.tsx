@@ -34,7 +34,9 @@ export const RankCarsOnCosts: React.FC<Props> = ({ onSort }) => {
           />
           <button
             type="button"
-            onClick={() => onSort(Number(fuelPrice), Number(distance))}
+            onClick={() => {
+              onSort(Number(fuelPrice), Number(distance));
+            }}
           >
             Rank Cars
           </button>

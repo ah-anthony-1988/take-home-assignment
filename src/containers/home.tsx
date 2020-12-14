@@ -13,7 +13,6 @@ export const Home: React.FC = () => {
     setGetCarsRequestState,
   ] = React.useState<RequestState>(RequestState.INIT);
   const [cars, setCars] = React.useState<Car[]>([]);
-  // TODO: use this state to distinguish between api fetch state and sorting state, as they are different
   const [
     searchingResultsState,
     setSearchingResultsState,
@@ -34,13 +33,13 @@ export const Home: React.FC = () => {
         return joinedValuesString.includes(query.toLowerCase());
       });
       setSearchResults(results);
-      setGetCarsRequestState(RequestState.SUCCESS);
+      setSearchingResultsState(RequestState.SUCCESS);
     },
     [cars]
   );
 
   const onSortOnCheapest = (fuelPrice: number, distancePerMonth: number) => {
-    setGetCarsRequestState(RequestState.PENDING);
+    setSearchingResultsState(RequestState.PENDING);
     // mock sorting procedure, as this has to be done on all cars in the database
     setTimeout(() => {
       const sortedResults = [...searchResults];
@@ -59,7 +58,7 @@ export const Home: React.FC = () => {
         return 1;
       });
       setSearchResults(sortedResults);
-      setGetCarsRequestState(RequestState.SUCCESS);
+      setSearchingResultsState(RequestState.SUCCESS);
     }, 1000);
   };
 
@@ -71,10 +70,12 @@ export const Home: React.FC = () => {
         // mock fetch duration from api
         setTimeout(() => {
           setCars(data);
+          setGetCarsRequestState(RequestState.SUCCESS);
         }, 1000);
       })
       .catch(() => {
         console.warn("Something went wrong...");
+        setGetCarsRequestState(RequestState.ERROR);
       });
     return function cancelStateUpdates() {
       setGetCarsRequestState((prev) => prev);
@@ -87,13 +88,16 @@ export const Home: React.FC = () => {
       <SearchBar
         onSearch={onSearch}
         setIsLoading={() => {
-          setGetCarsRequestState(RequestState.PENDING);
+          setSearchingResultsState(RequestState.PENDING);
         }}
       />
       <PageContent>
         <SearchCarResult
           cars={searchResults}
-          isLoading={getCarsRequestState === RequestState.PENDING}
+          isLoading={
+            searchingResultsState === RequestState.PENDING ||
+            getCarsRequestState === RequestState.PENDING
+          }
           onSort={onSortOnCheapest}
         />
       </PageContent>
