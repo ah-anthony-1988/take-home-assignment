@@ -5,6 +5,7 @@ import styles from "./add-new-car.module.scss";
 import { Heading } from "./elements/heading/heading";
 import { RequestState } from "../enums";
 import { postCar } from "../api/post-car";
+import { Card } from "./elements/card/card";
 
 type Props = {
   setRequestState: (state: RequestState) => void;
@@ -43,7 +44,7 @@ export const AddNewCar: React.FC<Props> = ({
   };
 
   return (
-    <div className={styles.root}>
+    <Card className={styles.root}>
       <Heading>Create entry</Heading>
       <form onSubmit={addNewCar} className={styles.form}>
         <ControlledInput
@@ -117,6 +118,6 @@ export const AddNewCar: React.FC<Props> = ({
           </button>
         </div>
       </form>
-    </div>
+    </Card>
   );
 };
