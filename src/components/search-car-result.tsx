@@ -36,7 +36,9 @@ export const SearchCarResult: React.FC<Props> = ({
                 </div>
                 <div className={styles.infoEntry}>Make: {c.make}</div>
                 <div className={styles.infoEntry}>Model: {c.model}</div>
-                {c.version && <div>{c.version}</div>}
+                <div className={styles.infoEntry}>
+                  Version: {c.version ? c.version : "N/A"}
+                </div>
                 <div className={styles.infoEntry}>
                   Release Year: {c.releaseYear}
                 </div>
